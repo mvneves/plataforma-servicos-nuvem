@@ -31,3 +31,14 @@ Lançar a Distribuição: Após configurar, clique em "Criar distribuição". O 
 ## Passo 4: Testar o Acesso ao Website
 * **Obter** o Domínio CloudFront: Após a distribuição estar ativa, copie o domínio fornecido pelo CloudFront (por exemplo, d1234.cloudfront.net).
 * **Acessar** o Website: Cole o domínio em seu navegador. Você deverá ver seu website sendo servido através do CloudFront, com o conteúdo entregue pelo ponto de presença (PoP) mais próximo.
+
+## Para saber mais: bucket privado com Origin Access Control (OAC)
+
+Nesta dinâmica o bucket fica público, o que funciona, mas é o padrão antigo: qualquer pessoa pode acessar os arquivos direto pelo S3, sem passar pelo CloudFront. A prática recomendada atualmente é manter o bucket **privado** (com "Bloquear todo o acesso público" ligado e sem hospedagem de site estático) e liberar o acesso só para o CloudFront, com *Origin Access Control*:
+
+* Ao criar a distribuição, escolha como origem o endpoint REST do bucket (`<bucket>.s3.<região>.amazonaws.com`), e não o endpoint de site estático.
+* Em **Origin access**, selecione **Origin access control settings (recommended)** e crie um OAC.
+* Defina `index.html` como **Default root object** da distribuição.
+* Depois de criar a distribuição, copie a política de bucket sugerida pelo CloudFront e cole-a na aba **Permissões** do bucket.
+
+Mais detalhes na [documentação do CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html).

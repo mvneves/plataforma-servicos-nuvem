@@ -11,9 +11,9 @@ Amazon Kinesis é um serviço de processamento de dados em tempo real que permit
 * Configure o número de shards. Para iniciantes, 1 shard é suficiente. 
 * Clique em "Create Kinesis stream".
 
-2. **Configurar Permissões do IAM:** 
-* Acesse o console do AWS IAM. * Crie uma nova role com permissões para Kinesis. 
-* Anexe a política gerenciada `AmazonKinesisFullAccess` à role. 
+2. **Permissões do IAM:** 
+* No AWS Academy Learner Lab não é possível criar *roles* IAM: use a role **LabRole**, que já existe na conta e tem permissões para o Kinesis (por exemplo, numa função Lambda consumidora, escolha **Use an existing role > LabRole**). 
+* Em uma conta AWS própria, crie no console do IAM uma role com a política gerenciada `AmazonKinesisFullAccess`. 
 
 #### Passo 2: Coletar Dados com o Amazon Kinesis 
 

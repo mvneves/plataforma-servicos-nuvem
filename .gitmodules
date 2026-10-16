@@ -1,0 +1,3 @@
+[submodule "card-collection"]
+	path = card-collection
+	url = https://github.com/cassiowt/card-collection.git

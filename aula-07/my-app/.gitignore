@@ -43,3 +43,6 @@ amplifytools.xcconfig
 .secret-*
 **.sample
 #amplify-do-not-edit-end
+
+# Contém o ID da conta e os ARNs das roles de quem criou o ambiente; é recriado pelo "amplify init"
+amplify/team-provider-info.json
